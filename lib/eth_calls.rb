@@ -232,8 +232,8 @@ module Web3::EthCalls
   end
 
     # See https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_newfilter
-  def eth_newFilter(fromBlock, toBlock, address, topics)
-  response = do_request("$CODE",[fromBlock, toBlock, address, topics])
+  def eth_newFilter(fromBlock='latest', toBlock='latest', address='0x00', topics=[])
+  response = do_request("eth_newFilter",[{ "fromBlock" => fromBlock, "toBlock" => toBlock, "address" => address, "topics" => topics])
   to_decimal response["result"]
   end
 
